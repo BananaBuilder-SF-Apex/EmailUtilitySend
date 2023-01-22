@@ -12,7 +12,7 @@ private class EmailSendUtilityTest {
     * @Description This is a test for the EmailSendUtility.massEmailSend method.
     */
     @isTest static void massEmailSendTest(){
-        //Create new Contacts and get Ids
+        //Using a test data factory to create new Contacts and return a list of Ids to use in the Mass Email Params
         List<Id> targetIds = TestDataFactory.generateContactIds(1);
         //Query an email template from the org. 
         //Unable to create a new Folder and then create a new Email template to store in folder for test.
