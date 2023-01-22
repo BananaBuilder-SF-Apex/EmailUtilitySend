@@ -10,27 +10,28 @@ public class EmailSendUtility {
     * @Description This utility method handles sending mass emails.
     * @Param List of Ids for mass email send, template the email will use, replyTo (optional) to set reply to email, display name for sender email.
     */
-	public static void massEmailSend(List<Id> targetIds, EmailTemplate template, String replyTo, String displayName) {
-        if(!targetIds.isEmpty()) {
-                //Create new Mass Email Send instance
-                List<Messaging.MassEmailMessage> emailList = new List<Messaging.MassEmailMessage>();
-                Messaging.MassEmailMessage mail = new Messaging.MassEmailMessage();
+     public static void massEmailSend(List<Id> targetIds, EmailTemplate template, String replyTo, String displayName) {
+	     //Check to make sure there are Contacts that need to be mass emailed
+	     if(!targetIds.isEmpty()) {
+		   //Create new Mass Email Send instance
+		   List<Messaging.MassEmailMessage> emailList = new List<Messaging.MassEmailMessage>();
+		   Messaging.MassEmailMessage mail = new Messaging.MassEmailMessage();
 
-                //Set MassEmailMessage values
-                mail.setSenderDisplayName(displayName);
-                mail.setTemplateId(template.Id);
-                mail.setTargetObjectIds(targetIds);
-            	//Check if replyTo param is blank before setting mail value
-                if(String.IsNotBlank(replyTo)){
-                    mail.setReplyTo(replyTo);
-                }
-                emailList.add(mail);
-                //Make sure list is not empty, and send Mass Email
-                if(!emailList.isEmpty()) {
-                    Messaging.sendEmail(emailList);
-                }
-        }
-    }
+		   //Set MassEmailMessage values
+		   mail.setSenderDisplayName(displayName);
+		   mail.setTemplateId(template.Id);
+		   mail.setTargetObjectIds(targetIds);
+		   //Check if replyTo param is blank before setting mail value
+		   if(String.IsNotBlank(replyTo)){
+		       mail.setReplyTo(replyTo);
+		   }
+		   emailList.add(mail);
+		   //Make sure list is not empty, and send Mass Email
+		   if(!emailList.isEmpty()) {
+		      Messaging.sendEmail(emailList);
+		   }
+            }
+     }
 
     /** 
     * @Description This utility method handles sending a single email.
