@@ -1,7 +1,7 @@
 /**
 * @Name EmailSendUtility
 * @Author Andy Bennett
-* @Date 1/21/2022
+* @Date 1/21/2023
 * @Group Utility
 * @Description This class is a reusable utility class used for both single email send and mass email sends.
 */
